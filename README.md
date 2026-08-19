@@ -1,59 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Kei Luxe Hotel & Resort - Booking System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, responsive, high-performance Hotel Reservation and Management System built with **Laravel**, **Inertia.js**, **React**, and **Tailwind CSS**, configured to run seamlessly on a local **XAMPP MySQL** environment.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 How to Run the Project (XAMPP Environment)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Prerequisites
+- **XAMPP** (with Apache and MySQL enabled)
+- **PHP** >= 8.2
+- **Composer**
+- **Node.js** & **npm**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Step-by-Step Setup
 
-## Learning Laravel
+1. **Clone / Open Project Directory**
+   Ensure the project folder resides in your XAMPP web root or local directory:
+   ```bash
+   cd c:\xampp\htdocs\booking-system
+   ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+2. **Install PHP & Node Dependencies** (if needed)
+   ```bash
+   composer install
+   npm install
+   ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Configure Environment Variables (`.env`)**
+   The application is pre-configured to connect to local XAMPP MySQL. Ensure your `.env` contains:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=booking_system
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-## Laravel Sponsors
+4. **Start XAMPP MySQL & Run Database Migrations**
+   - Open **XAMPP Control Panel** and start **Apache** and **MySQL**.
+   - Run the migration command to automatically create the database and tables:
+     ```bash
+     php artisan migrate
+     ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. **Launch the Development Servers**
+   Open two terminal windows/tabs:
+   - **Terminal 1 (Laravel Backend):**
+     ```bash
+     php artisan serve
+     ```
+   - **Terminal 2 (Vite + React Frontend):**
+     ```bash
+     npm run dev
+     ```
 
-### Premium Partners
+6. **Access the Application**
+   Navigate to `http://127.0.0.1:8000` in your web browser.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 💡 Architecture & Design Rationale
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. Choice of XAMPP MySQL Database
+* **Developer Familiarity & Reliability:** XAMPP MySQL is an established, industry-standard local stack for Laravel development. It provides zero-friction database administration via phpMyAdmin, fast execution speeds, and easy portability to production MySQL/MariaDB deployments.
 
-## Code of Conduct
+### 2. Monolithic Single-Page Application (Laravel + Inertia.js + React)
+* **Zero-API Overhead with SPA Speed:** Instead of building a decoupled REST/GraphQL API layer, **Inertia.js** bridges Laravel controllers directly with React components. This eliminates client-side routing state sync issues while preserving a fluid, app-like SPA experience.
+* **Component-Driven React UI:** React enables clean modularity for complex UI structures like interactive booking forms, real-time availability calendar selectors, and user authentication flows.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. Custom Aesthetic Design System (Tailwind CSS)
+* **Dark Luxury Theme:** Styled specifically for high-end hospitality (**Kei Luxe Hotel**) utilizing deep slate backgrounds (`bg-slate-900`/`bg-slate-850`), rich amber/gold accents (`from-amber-400 to-amber-500`), ambient glowing backdrops, and glassmorphism elements (`backdrop-blur-xl`).
+* **Pure CSS/SVG UI (No Asset Dependencies):** Built without relying on static bitmap images or external asset pipelines, ensuring lightweight loads and immediate visual appeal.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🛠 Tech Stack Overview
+- **Backend:** Laravel 11.x (PHP 8.2+)
+- **Frontend Framework:** React 18 with Inertia.js
+- **Styling:** Tailwind CSS
+- **Database:** MySQL via XAMPP
+- **Build Tool:** Vite

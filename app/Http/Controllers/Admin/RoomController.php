@@ -52,4 +52,15 @@ class RoomController extends Controller
 
         return redirect()->route('admin.rooms.index')->with('success', 'Room added successfully.');
     }
+
+    /**
+     * Remove the specified room from storage.
+     */
+    public function destroy(Room $room): RedirectResponse
+    {
+        $roomName = $room->name;
+        $room->delete();
+
+        return redirect()->route('admin.rooms.index')->with('success', "Room '{$roomName}' has been deleted successfully.");
+    }
 }

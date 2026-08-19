@@ -68,6 +68,10 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])->group(functio
     Route::get('/admin/rooms', [RoomController::class, 'index'])->name('admin.rooms.index');
     Route::get('/admin/rooms/create', [RoomController::class, 'create'])->name('admin.rooms.create');
     Route::post('/admin/rooms', [RoomController::class, 'store'])->name('admin.rooms.store');
+    Route::delete('/admin/rooms/{room}', [RoomController::class, 'destroy'])->name('admin.rooms.destroy');
+
+    Route::get('/admin/bookings', [\App\Http\Controllers\Admin\BookingController::class, 'index'])->name('admin.bookings.index');
+    Route::patch('/admin/bookings/{booking}/status', [\App\Http\Controllers\Admin\BookingController::class, 'updateStatus'])->name('admin.bookings.status');
 });
 
 Route::middleware('auth')->group(function () {

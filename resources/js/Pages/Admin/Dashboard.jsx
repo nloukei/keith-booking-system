@@ -1,9 +1,9 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AdminLayout from '@/Layouts/AdminLayout';
 import { Head, Link } from '@inertiajs/react';
 
 export default function AdminDashboard({ auth, stats = {}, reservations = [] }) {
     return (
-        <AuthenticatedLayout
+        <AdminLayout
             user={auth.user}
             header={
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -140,7 +140,7 @@ export default function AdminDashboard({ auth, stats = {}, reservations = [] }) 
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </AdminLayout>
     );
 }
 
